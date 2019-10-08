@@ -14,12 +14,14 @@ namespace Ejer3LinqPractice
 
         public int Mp { get; set; }
 
-        public string HeroeClass { get; set; }
+        public string Class { get; set; }
 
         public int Level { get; set; }
 
         public string Gender { get; set; }
 
         public string Description { get; set; }
+
+        
     }
 }
