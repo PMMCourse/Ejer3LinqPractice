@@ -20,8 +20,12 @@ namespace Ejer3LinqPractice
             Ejer4(heroes);
             Ejer5(heroes);
             Ejer6(heroes);
-            Ejer7(heroes);*/
+            Ejer7(heroes);
             Ejer8(heroes);
+            Ejer9(heroes);
+            Ejer10(heroes);
+            Ejer11(heroes);*/
+            Ejer12(heroes);
             Console.ReadKey();
         }
         public static String Ejer2(List<Heroe> heroes) {
@@ -100,6 +104,46 @@ namespace Ejer3LinqPractice
             {
                 Console.WriteLine("Nombre: " + a.Name + " Hp: " + a.Hp + " MP: " + a.Mp + " Clase: " + a.Class + " Nivel: " + a.Level + " Género: " + a.Gender + " Descripcion: " + a.Description);
             }
+        }
+
+        public static void Ejer9(List<Heroe> heroes)
+        {
+            var ej9 = heroes.OrderBy(x => x.Name);
+            foreach (var a in ej9)
+            {
+                Console.WriteLine("Nombre: " + a.Name + " Hp: " + a.Hp + " MP: " + a.Mp + " Clase: " + a.Class + " Nivel: " + a.Level + " Género: " + a.Gender + " Descripcion: " + a.Description);
+            }
+        }
+
+        public static void Ejer10(List<Heroe> heroes)
+        {
+            var ej10 = heroes.OrderByDescending(x => x.Name);
+            foreach (var a in ej10)
+            {
+                Console.WriteLine("Nombre: " + a.Name + " Hp: " + a.Hp + " MP: " + a.Mp + " Clase: " + a.Class + " Nivel: " + a.Level + " Género: " + a.Gender + " Descripcion: " + a.Description);
+            }
+        }
+
+        public static void Ejer11(List<Heroe> heroes)
+        {
+            var ej11 = heroes.Where(x => x.Class=="Warrior");
+            int vida=0;
+            foreach (var a in ej11)
+            {
+                vida = vida + a.Hp;
+            }
+            Console.WriteLine("La vida total de todos los guerreros es: "+vida);
+        }
+
+        public static void Ejer12(List<Heroe> heroes)
+        {
+            var ej12 = heroes.Where(x => x.Class == "Bard" & x.Level>3);
+            int mana = 0;
+            foreach (var a in ej12)
+            {
+                mana = mana + a.Mp;
+            }
+            Console.WriteLine("La mana total de todos los bardos de nivel mayor a 3 es: " + mana);
         }
     }
 }
