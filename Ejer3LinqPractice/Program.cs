@@ -19,7 +19,7 @@ namespace Ejer3LinqPractice
             //Agregamos el archivo JSON a una Lista para utilizar LINQ:
             List<Heroe> listaH = JsonConvert.DeserializeObject<List<Heroe>>(aj);
 
-            Ejer4(listaH);
+            Ejer8(listaH);
 
             Console.ReadKey();
 
@@ -97,16 +97,10 @@ namespace Ejer3LinqPractice
         //Ejercicio 8: Primer Heroe masculino, mas de 100 de HP y nivel 10.
         public static void Ejer8(List<Heroe> h)
         {
-            var nombre = h.Where(x => x.Gender == "Male" && x.Hp > 100 && x.Level == 10).ToList();
+            var nombre = h.FirstOrDefault(x => x.Gender == "Male" && x.Hp > 100 && x.Level == 10);
+            string resul = (nombre != null) ? nombre.Name : "No existen heroes";
+            Console.WriteLine(resul);
 
-            if(nombre.Min() != null)
-            {
-                Console.WriteLine(nombre[0].Name);
-            }
-            else
-            {
-                Console.WriteLine("No existe ningun heroe");
-            }     
         }
 
         //Ejercico 9: Ordenar de la A a la Z.
@@ -146,5 +140,6 @@ namespace Ejer3LinqPractice
 
             Console.WriteLine($"Mp total: {mpTotal}");
         }
+        }
     }
-}
+
