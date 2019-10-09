@@ -997,4 +997,5 @@
 {"Name":"Francisca","Hp":84,"Mp":42,"Class":null,"Level":3,"Gender":"Female","Description":null},
 {"Name":"Niko","Hp":72,"Mp":27,"Class":"Barbarian","Level":1,"Gender":"Male","Description":"ac nulla sed vel enim sit amet nunc viverra dapibus nulla suscipit ligula"},
 {"Name":"Lucia","Hp":92,"Mp":22,"Class":"Bard","Level":10,"Gender":"Female","Description":"tristique fusce congue diam id ornare imperdiet sapien urna pretium nisl ut volutpat"},
-{"Name":"Guenevere","Hp":73,"Mp":23,"Class":null,"Level":3,"Gender":"Female","Description":null}]
+{"Name":"Guenevere","Hp":73,"Mp":23,"Class":null,"Level":3,"Gender":"Female","Description":null},
+{"Name":"Paco","Hp":101,"Mp":23,"Class":null,"Level":11,"Gender":"Male","Description":"PRUEBA PARA SABER SI FUNCIONA EJER 8"}]
