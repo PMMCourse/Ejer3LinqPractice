@@ -14,7 +14,8 @@ namespace Ejer3LinqPractice
 
         public int Mp { get; set; }
 
-        public string HeroeClass { get; set; }
+        //En el JSON tienes el atributo como "Class" y aqui estaba como "HeroeClass". Lo cambio para poder acceder.
+        public string Class { get; set; }
 
         public int Level { get; set; }
 
