@@ -145,20 +145,30 @@ namespace Ejer3LinqPractice
         {
             int pocision = 0;
             var lista = h.Take(10);
-         
-            do
+
+            try
             {
-                foreach (var x in lista)
+                do
                 {
-                    Console.WriteLine(x.Name);
-                }
+                    foreach (var x in lista)
+                    {
+                        Console.WriteLine(x.Name);
+                    }
 
-                Console.ReadLine();
-                pocision += 10;
+                    Console.ReadLine();
 
-               lista = h.Skip(pocision).Take(10);
+                    pocision += 10;
 
-            } while (lista != lista.Last());            
+                    lista = h.Skip(pocision).Take(10);
+
+                } while (lista != lista.Last());
+
+            }
+            catch (InvalidOperationException)
+            {
+                Console.WriteLine("No hay mas heroes para mostrar");
+            }
+                     
         }
 
         }
