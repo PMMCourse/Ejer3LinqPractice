@@ -19,10 +19,9 @@ namespace Ejer3LinqPractice
             //Agregamos el archivo JSON a una Lista para utilizar LINQ:
             List<Heroe> listaH = JsonConvert.DeserializeObject<List<Heroe>>(aj);
 
-            Ejer8(listaH);
+            Ejer13(listaH);
 
             Console.ReadKey();
-
         }
 
         //Ejercicio 2: Cantidad total de heroes Masculinos y Femeninos:
@@ -140,6 +139,28 @@ namespace Ejer3LinqPractice
 
             Console.WriteLine($"Mp total: {mpTotal}");
         }
+
+        //Ejercicio 13: Mostrar 10 Personajes cada vez que se pulse una tecla.
+        public static void Ejer13(List<Heroe> h)
+        {
+            int pocision = 0;
+            var lista = h.Take(10);
+         
+            do
+            {
+                foreach (var x in lista)
+                {
+                    Console.WriteLine(x.Name);
+                }
+
+                Console.ReadLine();
+                pocision += 10;
+
+               lista = h.Skip(pocision).Take(10);
+
+            } while (lista != lista.Last());            
+        }
+
         }
     }
 
