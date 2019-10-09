@@ -15,9 +15,9 @@ namespace Ejer3LinqPractice
             String archivo = File.ReadAllText("Heroes.json");
             List<Heroe> heroes= JsonConvert.DeserializeObject<List<Heroe>>(archivo);
 
-            /*Console.WriteLine(Ejer2(heroes));
+            Console.WriteLine(Ejer2(heroes));
             Ejer3(heroes);
-            Ejer4(heroes);
+            /*Ejer4(heroes);
             Ejer5(heroes);
             Ejer6(heroes);
             Ejer7(heroes);
@@ -25,22 +25,22 @@ namespace Ejer3LinqPractice
             Ejer9(heroes);
             Ejer10(heroes);
             Ejer11(heroes);*/
-            Ejer12(heroes);
+            //Ejer12(heroes);
             Console.ReadKey();
         }
         public static String Ejer2(List<Heroe> heroes) {
             
             var femenino=heroes.Count(x => x.Gender == "Female");
             var masculino=heroes.Count(x => x.Gender == "Male");
-            String cadena = "Heroes masculinos:" + masculino+" Heroes femeninos:"+femenino;
-            return cadena;
+            return $"Heroes masculinos:" + masculino + " Heroes femeninos:" + femenino;
         }
 
         public static void Ejer3(List<Heroe> heroes)
         {
-            var ej3 = heroes.Where(x => x.Level >7);
+            var ej3 = heroes.Where(x => x.Level >7).Take(10);
             Console.WriteLine("Los 10 primeros heroes con nivel superior a 7 son:");
             int contador = 0;
+
             foreach (var a in ej3)
             {
                 if (contador<=10) {
@@ -144,6 +144,15 @@ namespace Ejer3LinqPractice
                 mana = mana + a.Mp;
             }
             Console.WriteLine("La mana total de todos los bardos de nivel mayor a 3 es: " + mana);
+        }
+
+        public static void Ejer13(List<Heroe> heroes)
+        {
+            var ej13 = heroes;
+            foreach (var a in ej13)
+            {
+                Console.WriteLine("Nombre: " + a.Name + " Hp: " + a.Hp + " MP: " + a.Mp + " Clase: " + a.Class + " Nivel: " + a.Level + " Género: " + a.Gender + " Descripcion: " + a.Description);
+            }
         }
     }
 }
