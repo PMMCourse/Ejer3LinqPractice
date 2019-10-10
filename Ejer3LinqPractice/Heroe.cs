@@ -8,13 +8,17 @@ namespace Ejer3LinqPractice
 {
     public class Heroe
     {
+        public override string ToString()
+        {
+            return "Name: " + this.Name + "\nHp: " + this.Hp + "\nMp: " + this.Mp + "\nHeroeClass: " + this.Class + "\nLevel:" + this.Level + "\nGender:" + this.Gender + "\nDescription: " + this.Description + "\n";
+        }
         public string Name { get; set; }
 
         public int Hp { get; set; }
 
         public int Mp { get; set; }
 
-        public string HeroeClass { get; set; }
+        public string Class { get; set; }
 
         public int Level { get; set; }
 
