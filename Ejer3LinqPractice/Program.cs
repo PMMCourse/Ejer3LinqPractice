@@ -15,13 +15,9 @@ static void Main(string[] args) {
         String ruta = Path.GetFullPath("Heroes.json");//Obtengo de la ruta relativa la absoluta
         StreamReader jsonStream = File.OpenText(ruta);
         var json = jsonStream.ReadToEnd();
+                    
             //lo decodifico del formato JSON y lo guardo en una lista de heroes
          List <Heroe> heroes = JsonConvert.DeserializeObject<List<Heroe>>(json);
-
-            //los metodos que no compilan es practicamente siempre por el mismo error y por ello estan comentado enteros (busque el código del error y aún asi ando perdido con ese error).
-            //**********
-            //**CS1061**
-            //**********
 
             void Ejer2(){//el único que compila
                 var h = heroes.Count(x => x.Gender == "Male");//si el genero es masculino lo cuenta
@@ -34,10 +30,10 @@ static void Main(string[] args) {
            
             void Ejer3(){
                 //en la lita filtrada guardo los heroes de nivel mayor a 7 agrupados y solo los 10 primeros
-               var listaFiltrada = heroes.GroupBy(x => x.Level > 7).Take(10);
+               var listaFiltrada = heroes.Where(x => x.Level > 7).Take(10);
                 foreach (var j in listaFiltrada)
                 {
-                   // Console.WriteLine(j.Level);
+                    Console.WriteLine(j.Level);
                 }
                 Console.Read();
             }
@@ -48,7 +44,11 @@ static void Main(string[] args) {
                  var agrupados = heroes.GroupBy(x => x.Class);
                 foreach (var li in agrupados)
                 {
-                   // Console.WriteLine("Agrupados por clase " + li.Name+" "+li.Class);
+                    foreach (var i in li)
+                    {
+                        Console.WriteLine("Agrupados por clase " + i.Name + " " + i.Class);
+                    }
+                   
                 }
                 Console.Read();
             };
@@ -56,10 +56,10 @@ static void Main(string[] args) {
              
             void Ejer5()
             {
-                var listafiltrada = heroes.GroupBy(x => x.Hp>50).Take(10);
+                var listafiltrada = heroes.Where(x => x.Hp>50).Take(10);
                 foreach (var li in listafiltrada)
                 {
-                 //   Console.WriteLine(li.Name);
+                    Console.WriteLine(li.Name);
                 }
                 Console.Read();
             }
@@ -67,13 +67,15 @@ static void Main(string[] args) {
 
             void Ejer6()
             {
-                /* var listaNueva = heroes.GroupBy(x => x.Hp > 50).GroupBy(y => y.Gender == "Female");
-
-                 foreach(var v in listaNueva)
-                 {
-                        Console.WriteLine(v.Name);
-                 }
-                 */
+                var listaNueva = heroes.Where(x => x.Hp > 50);
+                var list = listaNueva.Where(x => x.Gender == "Female").Take(10);
+               
+                    foreach (var j in list)
+                    {
+                        Console.WriteLine(j.Name);
+                    }
+                
+                 
                 Console.Read();
             }
             //Ejer6();
@@ -145,9 +147,18 @@ static void Main(string[] args) {
 
             void Ejer13()
             {
-               //no me sale
+                //no me sale
+                for (int i = 0; i < heroes.Count; i+=10)
+                {
+                    var lista = heroes.Skip(0 + 1).Take(10);
+                    foreach (var x in lista)
+                    {
+                        Console.WriteLine(x.Name);
+                    }
+                    Console.ReadKey();
+                }
             }
-            //Ejer13();
+            Ejer13();
 
             void Ejer14()
             {
