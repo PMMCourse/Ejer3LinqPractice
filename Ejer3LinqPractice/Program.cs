@@ -152,6 +152,47 @@ namespace Ejer3LinqPractice
             Console.WriteLine($"El maná total de los bardos es: {mpTotal}");
         }
 
+
+        //Estos 3 son copiadisimos de la pizarra
+        static void Ejer13(List<Heroe> listaHeroe)
+        {
+            for (int i = 0; i < listaHeroe.Count; i += 10)
+            {
+                var lista = listaHeroe.Skip(0 + i).Take(10);
+                foreach (var x in lista)
+                {
+                    Console.WriteLine(x.Name);
+                }
+                Console.ReadKey();
+
+            }
+        }
+
+        static void Ejer14(List<Heroe> listaHeroe)
+        {
+            var guerreroPo = listaHeroe.Where(p => p.HeroeClass == "Warrior" && p.Level > 10)
+                                                    .Select(y => new gerreroPotente { Hp = y.Hp });
+        }
+
+
+        static void ejer14_2<THeroClass>(String clase, List<Heroe> listaHeroe) where THeroClass : Heroe, new()
+        {
+            var guerreroPO = listaHeroe.Where(x => x.HeroeClass == clase)
+                                       .Select(y => new THeroClass { /*Meter atributos aqui*/});
+
+        }
         
+        static void ejer15<T>(this IEnumerable<T> collection, Action<T> doAction)
+        {
+            foreach (var item in collection)
+            {
+                doAction.Invoke(item);
+            }
+        }
     }
 }
+
+
+
+
+
