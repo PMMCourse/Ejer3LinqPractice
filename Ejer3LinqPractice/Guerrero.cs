@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ejer3LinqPractice
 {
-    public class Heroe
+    public class Guerrero
     {
         public string Name { get; set; }
 
