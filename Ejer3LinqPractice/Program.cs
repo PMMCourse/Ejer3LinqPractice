@@ -30,64 +30,48 @@ namespace Ejer3LinqPractice
             Extension.Ejer15(heroes, 19, "paco");
         }
 
-        public  static String Ejer2(List<Heroe>heroes)
+        public  static void Ejer2(List<Heroe>heroes)
         {
             var hombres = heroes.Count(x => x.Gender == "Male");
             var mujeres = heroes.Count(x => x.Gender == "Female");
-            String frase = "heroes con genero masculino " + hombres + " y heroes con genero femenino " + mujeres;
-            return frase;
+            Console.WriteLine("heroes con genero masculino " + hombres + " y heroes con genero femenino " + mujeres);
         }
         public static void Ejer3(List<Heroe> heroes)
         {
-            var nombre = heroes.Where(y => y.Level > 7);
-            int x = 0;
-            foreach(var a in nombre)
-            {
-                do
-                {
-                    Console.WriteLine(a.Name);
-                    x += 1;
-                } while (x <= 10);
+            var nombre = heroes.Where(y => y.Level > 7).Take(10);
+           Console.WriteLine(nombre);
+             
             }
 
-        }
+        
         public static void Ejer4(List<Heroe>heroes)
         {
-            var clases = heroes.OrderBy(x => x.HeroeClass);
-            foreach(var dato in clases)
-            {
-                Console.WriteLine("clase de heroe: " + dato.HeroeClass + " nombre del heroe: " + dato.Name);
-            }
+     
+        var grupos = heroes.GroupBy(x => x.HeroeClass);
+        Console.WriteLine(grupos); 
         }
         public static void Ejer5(List<Heroe> heroes)
         {
             var nombre = heroes.Where(x => x.Hp > 50);
-            foreach(var a in nombre)
+            foreach (var a in nombre)
             {
-                int contador = 0;
-                if (contador <= 10)
-                {
-                    Console.WriteLine("nombre: " + a.Name);
-                }
-            }
+                heroes.Where(x => x.Hp > 50).Take(10);
+                Console.WriteLine("nombre: " + a.Name);
+            } 
+            
         }
 
         public static void Ejer6(List<Heroe> heroes)
         {
-            var nombre = heroes.Where(x => x.Hp > 50 & x.Gender == "Female");
+            var nombre = heroes.Where(x => x.Hp > 50 & x.Gender == "Female").Take(10);
             foreach(var a in nombre)
-            {
-                int contador = 0;
-                if( contador <= 10)
-                    {
-                    Console.WriteLine("nombre: " + a.Name);
-                    contador += 1;
-                }
+            {               
+              Console.WriteLine("nombre: " + a.Name);                   
             }
         }
         public static void Ejer7(List<Heroe> heroes)
         {
-            var heroe = heroes.Where(x => x.Description == "");
+            var heroe = heroes.Where(x =>String.IsNullOrEmpty(x.Description));
             foreach(var a in heroe)
             {
                 Console.WriteLine("nombre: " + a.Name);
@@ -95,49 +79,35 @@ namespace Ejer3LinqPractice
         }
         public static void Ejer8(List<Heroe> heroes)
         {
-            var per = heroes.Where(x => x.Gender=="Male"& x.Hp > 100 & x.Level == 10);
-            foreach(var a in per)
-            {
-                Console.WriteLine("nombre: " + a.Name + " genero: " + a.Gender + " nivel de vida: " + a.Hp + " el nivel es: " + a.Level);
-            }
+            var per = heroes.FindAll(x => x.Gender=="Male"& x.Hp > 100 & x.Level == 10);
+            
+                Console.WriteLine(per);
+           
 
         }
         public static void Ejer9(List<Heroe> heroes)
         {
             var heroe = heroes.OrderBy(x => x.Name);
-            foreach(var a in heroe)
-            {
-                Console.WriteLine("nombre " + a.Name);
-            }
+           
         }
 
         public static void Ejer10(List<Heroe> heroes)
         {
             var heroe = heroes.OrderByDescending(x => x.Name);
-            foreach (var a in heroe)
-            {
-                Console.WriteLine("nombre " + a.Name);
-            }
+           
         }
         public static void Ejer11(List<Heroe> heroes)
         {
-            var guerreros = heroes.Where(a => a.HeroeClass == "Warrior");
-            int suma = 0;
-            foreach(var en in guerreros)
-            {
-                suma = suma + en.Hp;
-            }
-            Console.WriteLine("la suma de las vidas de los guerreros es " + suma);
+            var guerreros = heroes.Where(a => a.HeroeClass == "Warrior").Sum(a => a.Hp);
+          
+           
+            Console.WriteLine("la suma de las vidas de los guerreros es " + guerreros);
         }
         public static void Ejer12(List<Heroe> heroes)
         {
-            var bardos = heroes.Where(a => a.HeroeClass == "Bard" & a.Level > 3);
-            int sumaMana = 0;
-            foreach(var a in bardos)
-            {
-                sumaMana = sumaMana + a.Mp;
-            }
-            Console.WriteLine("La suma de las mana de los bardos es " + sumaMana);
+            var bardos = heroes.Where(a => a.HeroeClass == "Bard" & a.Level > 3).Sum(a=>a.Mp);
+            
+            Console.WriteLine("La suma de las mana de los bardos es " + bardos);
         }
         public static void Ejer13(List<Heroe> heroes)
         {
